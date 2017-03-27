@@ -1,3 +1,18 @@
+<br />
+<h2 class="app-name has-documentation"><?php p($l->t("Please select the encryption type")); ?></h2>
+<p id="encryptionKeySelection">
+	<select id="keyTypeId" name="keyType">
+		<option value="nokey"><?php p($l->t("Please select an encryption option"))?></option>
+		<option value="masterkey" <?php echo \OC::$server->getAppConfig()->getValue('encryption', 'useMasterKey', '0') !== '0' ? 'selected="selected"' : ''; ?>><?php p($l->t("Master Key"))?></option>
+		<option value="customkey"><?php p($l->t("User-specific key"))?></option>
+	</select>
+
+	<div id="confirm-encryption-warning" class="warning hidden">
+<p><?php p($l->t("Once encryption key confirmed cannot be reverted. Do you still want to continue? ")) ?> <input type="button" id="reconfirm-encryption-type" value="Enable Selection"></p>
+</div>
+</p>
+<br />
+
 <div class="section" id="encryptionAPI">
 	<h2 class="app-name has-documentation"><?php p($l->t('Server-side encryption')); ?></h2>
 	<a target="_blank" rel="noreferrer" class="icon-info"
